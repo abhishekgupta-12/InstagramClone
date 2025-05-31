@@ -1,11 +1,12 @@
-import { User } from "../models/user.model.js";
+import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import getDataUri from "../utils/datauril.js";
+
 export const register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
-
+         console.log(req.body)
         if (!username || !email || !password) {
             return res.status(400).json({
                 message: "Something is wrong, please check your input",
@@ -125,7 +126,7 @@ export const logout = async (req, res) => {
     }
 }
 
-export const getProfile = async (req, res) => {
+export const getUserProfile = async (req, res) => {
     try {
         const userId = req.params.id;;
         let user = await User.findById(userId);
@@ -183,7 +184,7 @@ export const editProfile = async (req, res) => {
     }
 }
 
-const getSuggestedUsers = async (req,res) => {
+ export const getSuggestedUsers = async (req,res) => {
     try {
         const suggestedUser=await User.find({ _id: { $ne: req.id } }).select("-password -__v").limit(10);
         if(!suggestedUser || suggestedUser.length === 0) {
@@ -209,7 +210,7 @@ const getSuggestedUsers = async (req,res) => {
 }
 
 
-const followOrUnfollow = async (req, res) => {
+ export const followOrUnfollow = async (req, res) => {
    try {
         const userId = req.id;//it is the id of the user who is logged in i am abhishek my account is login i want to follow or unfollow someone pople like simran
         const targetUserId = req.params.id;//it is the id of the user to be followed or unfollowed  thi is simran is we open and we want to follow or unfollow her account
