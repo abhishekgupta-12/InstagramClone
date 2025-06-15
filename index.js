@@ -22,7 +22,7 @@ console.log(__dirname);
 
 // CORS config
 const corsOptions = {
-  origin: "http://localhost:5173", // frontend URL
+  origin: process.env.CLIENT_URL, // frontend URL
   credentials: true,
 };
 
@@ -37,7 +37,6 @@ app.use("/api/v1/post", postRoute);
 app.use("/api/v1/message", messageRoute);
 
 app.use(express.static(path.join(__dirname,"/frontend/dist")));
-
 // HTTP + WebSocket server
 const server = http.createServer(app);
 setupSocket(server); // ✅ Initialize socket logic

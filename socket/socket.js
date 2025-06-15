@@ -12,7 +12,7 @@ export const getIo = () => io;
 export const setupSocket = (server) => {
   io = new Server(server, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: "https://socialmedia-frontend-rlct-3b7qcehwh-abhisheks-projects-4233a795.vercel.app",
       credentials: true,
     },
   });
