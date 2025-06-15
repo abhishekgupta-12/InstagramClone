@@ -1,0 +1,12 @@
+# Node.js backend
+back/node_modules/
+
+# React frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.next/
+
+# Env and logs
+.env
+.env.local
+*.log
